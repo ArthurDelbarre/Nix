@@ -6,7 +6,7 @@
         nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     };
 
-    outputs = { self, stdenv, nixpkgs, nixpkgs-unstable }:
+    outputs = { self, nixpkgs, nixpkgs-unstable }:
     let
         system = "x86_64-linux";
         overlay-unstable = final: prev: {
@@ -19,8 +19,9 @@
         };
     in
     {
-        packages.x86_64-linux.default = stdenv.mkDerivation {
-            inherit system;
+        packages.x86_64-linux.default =
+        with import nixpkgs { system = "x86_64-linux"; };
+        stdenv.mkDerivation {
             name = "Partitioning";
             src = self;
             buildPhase = "chmod +x ./scripts/partitioning.sh";
