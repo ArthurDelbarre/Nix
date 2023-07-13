@@ -26,7 +26,7 @@
             buildPhase = "chmod +x ./scripts/partitioning.sh";
             installPhase = "./scripts/partitioning.sh";
         };
-        nixosConfigurations = nixpkgs.lib.nixosSystem {
+        nixosConfigurations.router = nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [
                 # Overlays-module makes "pkgs.unstable" available in configuration.nix
