@@ -19,13 +19,13 @@
         };
     in
     {
-        # packages.x86_64-linux.default = stdenv.mkDerivation {
-        #     inherit system;
-        #     name = "Partitioning";
-        #     src = self;
-        #     buildPhase = "chmod +x ./scripts/partitioning.sh";
-        #     installPhase = "./scripts/partitioning.sh";
-        # };
+        packages.x86_64-linux.default = stdenv.mkDerivation {
+            inherit system;
+            name = "Partitioning";
+            src = self;
+            buildPhase = "chmod +x ./scripts/partitioning.sh";
+            installPhase = "./scripts/partitioning.sh";
+        };
         nixosConfigurations.router = nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [
