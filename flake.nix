@@ -19,7 +19,7 @@
         };
     in
     {
-        packages.x86_64-linux.default =
+        packages.x86_64-linux.partitioning =
         with import nixpkgs { system = "x86_64-linux"; };
         stdenv.mkDerivation {
             name = "Partitioning";
