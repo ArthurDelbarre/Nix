@@ -25,7 +25,7 @@
             name = "Partitioning";
             src = self;
             buildPhase = "chmod +x ./scripts/partitioning.sh";
-            installPhase = "./scripts/partitioning.sh";
+            installPhase = "sh ./scripts/partitioning.sh";
         };
         nixosConfigurations.router = nixpkgs.lib.nixosSystem {
             inherit system;
