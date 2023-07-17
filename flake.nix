@@ -31,7 +31,7 @@
             };
 
             partitioning = pkgs.writeShellApplication {
-                name = "make partitions";
+                name = "make_partitions";
                 text = ''
                     #!${pkgs.stdenv.shell}
                     ${builtins.readFile ./scripts/partitioning.sh}
