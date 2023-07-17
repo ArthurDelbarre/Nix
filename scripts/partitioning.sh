@@ -52,14 +52,14 @@ echo "Creating gpt label"
 sudo parted "${DEV}" -s mklabel gpt
 
 echo "Creating EFI partition"
-sudo parted "${DEV}" -s mkpart primary efi fat32 1MiB "${EFI}"MiB
+sudo parted "${DEV}" -s mkpart efi fat32 1MiB "${EFI}"MiB
 sudo parted "${DEV}" -s set 1 esp on
 
 echo "Creating root partition"
-sudo parted "${DEV}" -s mkpart primary root ext4 "${EFI}"MiB $(("${EFI}" + "${ROOT}"))MiB
+sudo parted "${DEV}" -s mkpart root ext4 "${EFI}"MiB $(("${EFI}" + "${ROOT}"))MiB
 
 echo "Creating swap partition"
-sudo parted "${DEV}" -s mkpart primary swap linux-swap $(("${EFI}" + "${ROOT}"))MiB $(("${EFI}" + "${ROOT}" + "${SWAP}"))MiB
+sudo parted "${DEV}" -s mkpart swap linux-swap $(("${EFI}" + "${ROOT}"))MiB $(("${EFI}" + "${ROOT}" + "${SWAP}"))MiB
 
 echo "--------------------------------------------------------------------------------"
 
