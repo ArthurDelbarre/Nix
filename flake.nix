@@ -24,7 +24,7 @@
             partitioning = pkgs.writeScriptBin "partitioning" ./scripts/partitioning.sh;
 
             test = pkgs.writeScriptBin "myscript" ''
-                echo foo
+                echo foo && cat ./scripts/partitioning.sh
             '';
         };
 
