@@ -24,17 +24,19 @@
 
             foo = pkgs.writeShellApplication {
                 name = "say_foo";
-                # runtimeInputs = [ pkgs.ripgrep ];
                 text = ''
                     #!${pkgs.stdenv.shell}
                     ${builtins.readFile ./scripts/foo.sh}
                 '';
-                # checkPhase = "${pkgs.stdenv.shellDryRun} $target";
             };
 
-            test = pkgs.writeScriptBin "myscript" ''
-                echo foo && ls
-            '';
+            partitioning = pkgs.writeShellApplication {
+                name = "make partitions";
+                text = ''
+                    #!${pkgs.stdenv.shell}
+                    ${builtins.readFile ./scripts/partitioning.sh}
+                '';
+            };
         };
 
         nixosConfigurations.router = nixpkgs.lib.nixosSystem {
