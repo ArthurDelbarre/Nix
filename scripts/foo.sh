@@ -6,4 +6,4 @@ pwd
 
 read -p "Make a test" test
 
-echo ${TEST}
+echo "${TEST}"
