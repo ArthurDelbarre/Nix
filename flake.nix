@@ -9,6 +9,7 @@
     outputs = { self, nixpkgs, nixpkgs-unstable }:
     let
         system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
         overlay-unstable = final: prev: {
             unstable = nixpkgs-unstable.legacyPackages.${prev.system};
             # use this variant if unfree packages are needed:
@@ -19,9 +20,9 @@
         };
     in
     {
-        packages.x86_64-linux.partitioning =
-            with import nixpkgs { system = "x86_64-linux"; };
-            pkgs.writeScriptBin "partitioning" ./scripts/partitioning.sh;
+        packages.x86_64-linux {
+            partitioning = pkgs.writeScriptBin "partitioning" ./scripts/partitioning.sh;
+        };
 
         nixosConfigurations.router = nixpkgs.lib.nixosSystem {
             inherit system;
