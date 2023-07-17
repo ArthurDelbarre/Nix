@@ -4,6 +4,7 @@ echo foo
 ls
 pwd
 
-read -p "Make a test" TEST
+echo "Making a test"
+read -r TEST
 
 echo "${TEST}"
