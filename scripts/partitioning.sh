@@ -19,7 +19,7 @@ echo
 echo "Which device do you wish to install on? "
 read -r DEVICE
 
-DEV=${DEVICES[$(($DEVICE+1))]}
+DEV=${DEVICES[$((DEVICE + 1))]}
 
 echo "--------------------------------------------------------------------------------"
 
