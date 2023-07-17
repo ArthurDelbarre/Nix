@@ -21,10 +21,19 @@
     in
     {
         packages.x86_64-linux = {
-            partitioning = pkgs.writeScriptBin "partitioning" ./scripts/partitioning.sh;
+
+            foo = pkgs.writeShellApplication {
+                name = "say_foo";
+                runtimeInputs = [ pkgs.ripgrep ];
+                text = ''
+                    #!${pkgs.stdenv.shell}
+                    ${builtins.readFile ./scripts/foo.sh}
+                '';
+                checkPhase = "${pkgs.stdenv.shellDryRun} $target";
+            };
 
             test = pkgs.writeScriptBin "myscript" ''
-                echo foo && cat ./scripts/partitioning.sh
+                echo foo && ls
             '';
         };
 
