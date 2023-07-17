@@ -34,7 +34,7 @@ read -r  SWAP
 
 echo "Will now partition ${DEV} with :"
 echo "- EFI size ${EFI}MiB."
-echo "- Root size ${Root}MiB."
+echo "- Root size ${ROOT}MiB."
 echo "- Swap size ${SWAP}MiB."
 
 echo "Processing to the partitioning ? Yes"
