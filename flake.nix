@@ -20,7 +20,7 @@
         };
     in
     {
-        packages.x86_64-linux {
+        packages.x86_64-linux = {
             partitioning = pkgs.writeScriptBin "partitioning" ./scripts/partitioning.sh;
         };
 
