@@ -66,7 +66,7 @@ echo "--------------------------------------------------------------------------
 echo "Getting created partition names..."
 
 i=1
-for part in $(sudo fdisk -l | grep $DEV | grep -v "," | awk '{print $1}'); do
+for part in $(sudo fdisk -l | grep "$DEV" | grep -v "," | awk '{print $1}'); do
     echo "[$i] $part"
     PARTITIONS[$i]=$part
     i=$((i+1))
