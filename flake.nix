@@ -20,13 +20,9 @@
     in
     {
         packages.x86_64-linux.partitioning =
-        with import nixpkgs { system = "x86_64-linux"; };
-        stdenv.mkDerivation {
-            name = "Partitioning";
-            src = self;
-            buildPhase = "chmod +x ./scripts/partitioning.sh";
-            installPhase = "sh ./scripts/partitioning.sh";
-        };
+            with import nixpkgs { system = "x86_64-linux"; };
+            pkgs.writeScriptBin "partitioning" ./scripts/partitioning.sh;
+
         nixosConfigurations.router = nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [
