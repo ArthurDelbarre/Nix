@@ -22,6 +22,10 @@
     {
         packages.x86_64-linux = {
             partitioning = pkgs.writeScriptBin "partitioning" ./scripts/partitioning.sh;
+
+            test = pkgs.writeScriptBin "myscript" ''
+                echo foo
+            '';
         };
 
         nixosConfigurations.router = nixpkgs.lib.nixosSystem {
