@@ -46,20 +46,20 @@ if [ "$ANSWER" != "Yes" ]; then
 fi
 
 echo "Zapping disk"
-sudo sgdisk --zap-all ${DEV}
+sudo sgdisk --zap-all "${DEV}"
 
 echo "Creating gpt label"
-sudo parted ${DEV} -s mklabel gpt
+sudo parted "${DEV}" -s mklabel gpt
 
 echo "Creating EFI partition"
-sudo parted ${DEV} -s mkpart primary efi fat32 1MiB ${EFI}MiB
-sudo parted ${DEV} -s set 1 esp on
+sudo parted "${DEV}" -s mkpart primary efi fat32 1MiB "${EFI}"MiB
+sudo parted "${DEV}" -s set 1 esp on
 
 echo "Creating root partition"
-sudo parted ${DEV} -s mkpart primary root ext4 ${EFI}MiB $((${EFI} + ${ROOT}))MiB
+sudo parted "${DEV}" -s mkpart primary root ext4 "${EFI}"MiB $(("${EFI}" + "${ROOT}"))MiB
 
 echo "Creating swap partition"
-sudo parted ${DEV} -s mkpart primary swap linux-swap $((${EFI} + ${ROOT}))MiB $((${EFI} + ${ROOT} + ${SWAP}))MiB
+sudo parted "${DEV}" -s mkpart primary swap linux-swap $(("${EFI}" + "${ROOT}"))MiB $(("${EFI}" + "${ROOT}" + "${SWAP}"))MiB
 
 echo "--------------------------------------------------------------------------------"
 
@@ -80,21 +80,21 @@ echo "Formatting partitions"
 
 echo "Formatting ${P1} to fat32"
 
-sudo mkfs.fat -F 32 -n boot ${P1}
+sudo mkfs.fat -F 32 -n boot "${P1}"
 
 echo "Formatting ${P2} to ext4"
 
-sudo mkfs.ext4 -L nixos ${P2}
+sudo mkfs.ext4 -L nixos "${P2}"
 
 echo "Enabling swap on ${P3}"
 
-sudo mkswap -L swap ${P3}
-sudo swapon ${P3}
+sudo mkswap -L swap "${P3}"
+sudo swapon "${P3}"
 
 echo "Mounting filesystems..."
 
-sudo mount ${P2} /mnt
-sudo mount --mkdir ${P1} /mnt/efi
+sudo mount "${P2}" /mnt
+sudo mount --mkdir "${P1}" /mnt/efi
 
 echo "--------------------------------------------------------------------------------"
 
