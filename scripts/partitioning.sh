@@ -16,22 +16,29 @@ for device in $(sudo fdisk -l | grep "^Disk /dev" | awk "{print \$2}" | sed "s/:
 done
 
 echo
-read -p "Which device do you wish to install on? " DEVICE
+echo "Which device do you wish to install on? "
+read -r DEVICE
 
 DEV=${DEVICES[$(($DEVICE+1))]}
 
 echo "--------------------------------------------------------------------------------"
 
-read -p "How much space do you need in MiB for the EFI partition? " EFI
-read -p "How much space do you need in MiB for the root partition? " ROOT
-read -p "How much swap space do you need in MiB ? " SWAP
+echo "How much space do you need in MiB for the EFI partition?"
+read -r EFI
+
+echo "How much space do you need in MiB for the root partition? "
+read -r  ROOT
+
+echo "How much swap space do you need in MiB ?"
+read -r  SWAP
 
 echo "Will now partition ${DEV} with :"
 echo "- EFI size ${EFI}MiB."
 echo "- Root size ${Root}MiB."
 echo "- Swap size ${SWAP}MiB."
 
-read -p "Processing to the partitioning ? Yes" ANSWER
+echo "Processing to the partitioning ? Yes"
+read -r ANSWER
 
 if [ "$ANSWER" != "Yes" ]; then
     echo "Operation cancelled."
@@ -90,4 +97,6 @@ sudo mount ${P2} /mnt
 sudo mount --mkdir ${P1} /mnt/efi
 
 echo "--------------------------------------------------------------------------------"
-read -p "Press enter to quit"
+
+echo "Press enter to quit"
+read -r
