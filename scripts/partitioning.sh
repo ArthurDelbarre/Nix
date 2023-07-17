@@ -74,6 +74,7 @@ done
 
 P1=${PARTITIONS[1]}
 P2=${PARTITIONS[2]}
+P3=${PARTITIONS[3]}
 
 echo "--------------------------------------------------------------------------------"
 echo "Formatting partitions"
