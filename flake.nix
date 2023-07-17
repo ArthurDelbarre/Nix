@@ -24,12 +24,12 @@
 
             foo = pkgs.writeShellApplication {
                 name = "say_foo";
-                runtimeInputs = [ pkgs.ripgrep ];
+                # runtimeInputs = [ pkgs.ripgrep ];
                 text = ''
                     #!${pkgs.stdenv.shell}
                     ${builtins.readFile ./scripts/foo.sh}
                 '';
-                checkPhase = "${pkgs.stdenv.shellDryRun} $target";
+                # checkPhase = "${pkgs.stdenv.shellDryRun} $target";
             };
 
             test = pkgs.writeScriptBin "myscript" ''
