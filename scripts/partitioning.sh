@@ -90,4 +90,4 @@ sudo mount ${P2} /mnt
 sudo mount --mkdir ${P1} /mnt/efi
 
 echo "--------------------------------------------------------------------------------"
-read -p "Press enter to quit" NULL
+read -p "Press enter to quit"
