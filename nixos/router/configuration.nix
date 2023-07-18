@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 {
 
-    imports = [
-        ./hardware-configuration.nix
-    ];
-
     # Name the host machine
     networking.hostName = "router";
 

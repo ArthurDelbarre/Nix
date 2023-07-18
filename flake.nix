@@ -22,14 +22,6 @@
     {
         packages.x86_64-linux = {
 
-            foo = pkgs.writeShellApplication {
-                name = "say_foo";
-                text = ''
-                    #!${pkgs.stdenv.shell}
-                    ${builtins.readFile ./scripts/foo.sh}
-                '';
-            };
-
             partitioning = pkgs.writeShellApplication {
                 name = "make_partitions";
                 text = ''
