@@ -99,5 +99,15 @@ sudo mount --mkdir "${P1}" /mnt/efi
 
 echo "--------------------------------------------------------------------------------"
 
-echo "Press enter to quit"
+echo "Generation hardware configuration file"
+
+sudo nixos-generate-config --root /mnt --show-hardware-config > /mnt/hardware-configuration.nix
+
+sudo cd /mnt
+
+sudo nano ./hardware-configuration.nix
+
+echo "Press enter to proceed to the installation"
 read -r
+
+sudo nixos-install --flake "githun:ArthurDelbarre/Nix#router" --no-write-lock-file

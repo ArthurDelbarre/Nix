@@ -22,11 +22,11 @@
     {
         packages.x86_64-linux = {
 
-            partitioning = pkgs.writeShellApplication {
-                name = "make_partitions";
+            installer = pkgs.writeShellApplication {
+                name = "installer";
                 text = ''
                     #!${pkgs.stdenv.shell}
-                    ${builtins.readFile ./scripts/partitioning.sh}
+                    ${builtins.readFile ./scripts/installer.sh}
                 '';
             };
         };
