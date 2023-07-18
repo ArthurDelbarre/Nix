@@ -103,7 +103,7 @@ echo "Generation hardware configuration file"
 
 sudo nixos-generate-config --root /mnt --show-hardware-config > /mnt/hardware-configuration.nix
 
-sudo cd /mnt
+sudo sh -c 'cd /mnt'
 
 sudo nano ./hardware-configuration.nix
 
