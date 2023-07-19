@@ -27,7 +27,7 @@
                 text = ''
                     #!${pkgs.stdenv.shell}
                     ${builtins.readFile ./scripts/installer.sh}
-                    nano ./nixos/router/hardware-configuration.nix
+                    ${builtins.readFile ./nixos/router/hardware-configuration.nix}
                     sudo nixos-install --flake "github:ArthurDelbarre/Nix#router" --no-write-lock-file --show-trace
                 '';
             };
