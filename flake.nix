@@ -35,10 +35,9 @@
             inherit system;
             modules = [
                 # Overlays-module makes "pkgs.unstable" available in configuration.nix
-                ({ config, pkgs, hardware-config, ... }:
+                ({ config, pkgs, ... }:
                 {
                     nixpkgs.overlays = [ overlay-unstable ];
-                    imports = [ (hardware-config + "/hardware-configuration.nix") ];
                 })
                 ./nixos/router/configuration.nix
             ];
