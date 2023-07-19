@@ -99,9 +99,9 @@ sudo mount --mkdir "${P1}" /mnt/efi
 
 echo "--------------------------------------------------------------------------------"
 
-echo "Generation hardware configuration file"
+# echo "Generation hardware configuration file"
 
-sudo nixos-generate-config --root /mnt --show-hardware-config | sudo tee ./config/nixos/router/hardware-configuration.nix > /dev/null
+# sudo nixos-generate-config --root /mnt --show-hardware-config | sudo tee ./config/nixos/router/hardware-configuration.nix > /dev/null
 
 sudo nano ./config/nixos/router/hardware-configuration.nix
 
