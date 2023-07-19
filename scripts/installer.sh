@@ -108,4 +108,4 @@ sudo nano ./config/nixos/router/hardware-configuration.nix
 echo "Press enter to proceed to the installation"
 read -r
 
-sudo nixos-install --flake "./config/flake.nix#router" --show-trace
+sudo nixos-install --flake "./config/#router" --show-trace
