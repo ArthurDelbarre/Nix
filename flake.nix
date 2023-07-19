@@ -34,14 +34,11 @@
         nixosConfigurations.router = nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [
-                { config, pkgs, lib, ... }:
-                {
-                    imports = [ ./hardware-configuration.nix ];
-                }
                 # Overlays-module makes "pkgs.unstable" available in configuration.nix
-                ({ config, pkgs, ... }:
+                ({ config, pkgs, lib, ... }:
                 {
                     nixpkgs.overlays = [ overlay-unstable ];
+                    imports = [ ./hardware-configuration.nix ];
                 })
                 ./nixos/router/configuration.nix
             ];
