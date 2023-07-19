@@ -18,7 +18,7 @@
       fsType = "ext4";
     };
 
-  fileSystems."/efi" =
+  fileSystems."/boot" =
     { device = "/dev/disk/by-label/efi";
       fsType = "vfat";
     };

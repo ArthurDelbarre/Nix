@@ -90,12 +90,12 @@ sudo mkfs.ext4 -L nixos "${P2}"
 echo "Enabling swap on ${P3}"
 
 sudo mkswap -L swap "${P3}"
-sudo swapon "${P3}"
+# sudo swapon "${P3}"
 
-echo "Mounting filesystems..."
+# echo "Mounting filesystems..."
 
-sudo mount "${P2}" /mnt
-sudo mount --mkdir "${P1}" /mnt/efi
+# sudo mount "${P2}" /mnt
+# sudo mount --mkdir "${P1}" /mnt/efi
 
 echo "--------------------------------------------------------------------------------"
 
@@ -108,4 +108,4 @@ sudo nano ./config/nixos/router/hardware-configuration.nix
 echo "Press enter to proceed to the installation"
 read -r
 
-sudo nixos-install --flake "./config/#router" --show-trace
+sudo nixos-install --flake "github:ArthurDelbarre/Nix#router" --no-write-lock-file --show-trace
