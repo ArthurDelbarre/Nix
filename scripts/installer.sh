@@ -103,11 +103,9 @@ echo "Generation hardware configuration file"
 
 sudo nixos-generate-config --root /mnt --show-hardware-config | sudo tee /mnt/hardware-configuration.nix > /dev/null
 
-sudo sh -c 'cd /mnt'
-
-sudo nano ./hardware-configuration.nix
+sudo nano /mnt/hardware-configuration.nix
 
 echo "Press enter to proceed to the installation"
 read -r
 
-sudo nixos-install --flake "github:ArthurDelbarre/Nix#router" --no-write-lock-file
+sudo sh -c 'cd /mnt && nixos-install --flake "github:ArthurDelbarre/Nix#router" --no-write-lock-file'
