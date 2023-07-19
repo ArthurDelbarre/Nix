@@ -23,7 +23,7 @@
         packages.x86_64-linux = {
             installer = pkgs.writeShellApplication {
                 name = "installer";
-                buildInputs = [ pkgs.git ];
+                runtimeInputs = [ pkgs.git ];
                 text = ''
                     #!${pkgs.stdenv.shell}
                     ${builtins.readFile ./scripts/installer.sh}
