@@ -38,7 +38,7 @@
                 ({ config, pkgs, ... }:
                 {
                     nixpkgs.overlays = [ overlay-unstable ];
-                    imports = [ ./hardware-configuration.nix ];
+                    imports = [ <hardware-config> ];
                 })
                 ./nixos/router/configuration.nix
             ];
