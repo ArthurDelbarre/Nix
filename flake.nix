@@ -21,11 +21,10 @@
     in
     {
         packages.x86_64-linux = {
-
             installer = pkgs.writeShellApplication {
                 name = "installer";
-                runtimeInputs = [ git ];
-                text = ''
+                buildInputs = [ pkgs.git ];
+                shellScript = ''
                     #!${pkgs.stdenv.shell}
                     ${builtins.readFile ./scripts/installer.sh}
                 '';
