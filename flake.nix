@@ -6,7 +6,7 @@
         nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     };
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, lib }:
+    outputs = { self, nixpkgs, nixpkgs-unstable }:
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -35,7 +35,7 @@
             inherit system;
             modules = [
                 # Overlays-module makes "pkgs.unstable" available in configuration.nix
-                ({ config, pkgs, lib, ... }:
+                ({ config, pkgs, ... }:
                 {
                     nixpkgs.overlays = [ overlay-unstable ];
                     imports = [ ./hardware-configuration.nix ];
