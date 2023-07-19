@@ -108,4 +108,4 @@ sudo nano /mnt/etc/nixos/hardware-configuration.nix
 echo "Press enter to proceed to the installation"
 read -r
 
-sudo sh -c 'cd /mnt && nixos-install --flake "github:ArthurDelbarre/Nix#router" --extra-config /mnt/etc/nixos/hardware-configuration.nix --no-write-lock-file'
+sudo sh -c 'cd /mnt && nixos-install --flake "github:ArthurDelbarre/Nix#router" -I /mnt/etc/nixos/hardware-configuration.nix --no-write-lock-file'
