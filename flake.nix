@@ -27,7 +27,7 @@
                 text = ''
                     #!${pkgs.stdenv.shell}
                     git clone https://github.com/ArthurDelbarre/Nix.git config
-                    ./config/scripts/installer.sh
+                    sudo ./config/scripts/installer.sh
                 '';
             };
         };
