@@ -1,10 +1,8 @@
 { config, pkgs, ... }:
-let
-    hardwareConfiguration = import /mnt/hardware-configuration.nix;
-in
 {
+
     imports = [
-        hardwareConfiguration
+        ./hardware-configuration.nix
     ];
 
     # Make the system bootable
