@@ -6,7 +6,7 @@
         nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     };
 
-    outputs = { self, nixpkgs, nixpkgs-unstable }:
+    outputs = { self, nixpkgs, nixpkgs-unstable, lib }:
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -39,7 +39,10 @@
                 {
                     nixpkgs.overlays = [ overlay-unstable ];
                 })
-                ./hardware-configuration.nix
+                { config, pkgs, lib, ... }:
+                {
+                    imports = [ ./hardware-configuration.nix ];
+                }
                 ./nixos/router/configuration.nix
             ];
         };
