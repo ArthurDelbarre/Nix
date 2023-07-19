@@ -4,7 +4,7 @@
         ./hardware-configuration.nix
     ];
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     # Make the system bootable
     boot.loader.systemd-boot.enable = true;
