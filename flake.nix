@@ -26,7 +26,8 @@
                 runtimeInputs = [ pkgs.git ];
                 text = ''
                     #!${pkgs.stdenv.shell}
-                    git clone https://github.com/ArthurDelbarre/Nix.git config
+                    sudo git clone https://github.com/ArthurDelbarre/Nix.git config
+                    sudo chmod +x ./config/scripts/installer.sh
                     sudo ./config/scripts/installer.sh
                 '';
             };
