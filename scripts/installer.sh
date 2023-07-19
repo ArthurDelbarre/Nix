@@ -101,6 +101,8 @@ echo "--------------------------------------------------------------------------
 
 echo "Generation hardware configuration file"
 
+sudo mkdir -p /mnt/etc/nixos
+
 sudo nixos-generate-config --root /mnt --show-hardware-config | sudo tee /mnt/etc/nixos/hardware-configuration.nix > /dev/null
 
 sudo nano /mnt/etc/nixos/hardware-configuration.nix
