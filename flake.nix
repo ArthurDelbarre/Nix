@@ -24,7 +24,7 @@
             installer = pkgs.writeShellApplication {
                 name = "installer";
                 buildInputs = [ pkgs.git ];
-                shellScript = ''
+                text = ''
                     #!${pkgs.stdenv.shell}
                     ${builtins.readFile ./scripts/installer.sh}
                 '';
