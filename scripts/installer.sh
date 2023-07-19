@@ -99,15 +99,17 @@ sudo mount --mkdir "${P1}" /mnt/efi
 
 echo "--------------------------------------------------------------------------------"
 
+echo "Download config files"
+
+sudo git clone https://github.com/ArthurDelbarre/Nix.git config
+
 echo "Generation hardware configuration file"
 
-sudo mkdir -p /mnt/etc/nixos
+sudo nixos-generate-config --root /mnt --show-hardware-config | sudo tee ./config/router/hardware-configuration.nix > /dev/null
 
-sudo nixos-generate-config --root /mnt --show-hardware-config | sudo tee /mnt/etc/nixos/hardware-configuration.nix > /dev/null
-
-sudo nano /mnt/etc/nixos/hardware-configuration.nix
+sudo nano ./config/router/hardware-configuration.nix
 
 echo "Press enter to proceed to the installation"
 read -r
 
-sudo nixos-install --flake "github:ArthurDelbarre/Nix#router" -I hardware-config=/mnt/etc/nixos --no-write-lock-file --show-trace
+sudo nixos-install --flake "./config/flake.nix#router" --show-trace
