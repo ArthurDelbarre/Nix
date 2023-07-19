@@ -52,14 +52,14 @@ echo "Creating gpt label"
 sudo parted "${DEV}" -s mklabel gpt
 
 echo "Creating EFI partition"
-sudo parted "${DEV}" -s mkpart efi fat32 1MiB "${EFI}"MiB
-sudo parted "${DEV}" -s set 1 esp on
+sudo parted "${DEV}" -s mkpart ESP fat32 1MiB "${EFI}"MiB
+sudo parted "${DEV}" -s set 1 boot on
 
-echo "Creating root partition"
-sudo parted "${DEV}" -s mkpart root ext4 "${EFI}"MiB $(("${EFI}" + "${ROOT}"))MiB
+echo "Creating nix partition"
+sudo parted "${DEV}" -s mkpart Nix ext4 "${EFI}"MiB $(("${EFI}" + "${ROOT}"))MiB
 
 echo "Creating swap partition"
-sudo parted "${DEV}" -s mkpart swap linux-swap $(("${EFI}" + "${ROOT}"))MiB $(("${EFI}" + "${ROOT}" + "${SWAP}"))MiB
+sudo parted "${DEV}" -s mkpart Swap linux-swap $(("${EFI}" + "${ROOT}"))MiB $(("${EFI}" + "${ROOT}" + "${SWAP}"))MiB
 
 echo "--------------------------------------------------------------------------------"
 
@@ -90,12 +90,12 @@ sudo mkfs.ext4 -L nixos "${P2}"
 echo "Enabling swap on ${P3}"
 
 sudo mkswap -L swap "${P3}"
-# sudo swapon "${P3}"
+sudo swapon "${P3}"
 
-# echo "Mounting filesystems..."
+echo "Mounting filesystems..."
 
-# sudo mount "${P2}" /mnt
-# sudo mount --mkdir "${P1}" /mnt/efi
+sudo mount --mkdir "${P1}" /mnt/boot
+sudo mount --mkdir "${P2}" /mnt/nix
 
 echo "--------------------------------------------------------------------------------"
 
@@ -103,7 +103,7 @@ echo "--------------------------------------------------------------------------
 
 # sudo nixos-generate-config --root /mnt --show-hardware-config | sudo tee ./config/nixos/router/hardware-configuration.nix > /dev/null
 
-sudo nano ./config/nixos/router/hardware-configuration.nix
+sudo nano ./nixos/router/hardware-configuration.nix
 
 echo "Press enter to proceed to the installation"
 read -r
