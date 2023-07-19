@@ -22,20 +22,20 @@
 
     fileSystems."/nix" =
         {
-            device = "/dev/disk/by-labe/Nix";
+            device = "/dev/disk/by-partlabe/nix";
             fsType = "ext4";
         };
 
     fileSystems."/boot" =
         {
-            device = "/dev/disk/by-label/ESP";
+            device = "/dev/disk/by-partlabel/boot";
             fsType = "vfat";
         };
 
     swapDevices =
         [
             {
-                device = "/dev/disk/by-label/Swap";
+                device = "/dev/disk/by-partlabel/swap";
             }
         ];
 

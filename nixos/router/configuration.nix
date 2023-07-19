@@ -33,6 +33,6 @@
             "wheel"
             "networkmanager"
         ];
-        passwordFile = "../users/neil_passwd.txt";
+        passwordFile = "../../users/neil_passwd.txt";
     };
 }

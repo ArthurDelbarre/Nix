@@ -23,18 +23,18 @@ DEV=${DEVICES[$((DEVICE + 1))]}
 
 echo "--------------------------------------------------------------------------------"
 
-echo "How much space do you need in MiB for the EFI partition?"
+echo "How much space do you need in MiB for the boot partition?"
 read -r EFI
 
-echo "How much space do you need in MiB for the root partition? "
+echo "How much space do you need in MiB for the nix partition? "
 read -r  ROOT
 
 echo "How much swap space do you need in MiB ?"
 read -r  SWAP
 
 echo "Will now partition ${DEV} with :"
-echo "- EFI size ${EFI}MiB."
-echo "- Root size ${ROOT}MiB."
+echo "- Boot size ${EFI}MiB."
+echo "- Nix size ${ROOT}MiB."
 echo "- Swap size ${SWAP}MiB."
 
 echo "Processing to the partitioning ? Yes"
@@ -51,7 +51,7 @@ sudo sgdisk --zap-all "${DEV}"
 echo "Creating gpt label"
 sudo parted "${DEV}" -s mklabel gpt
 
-echo "Creating EFI partition"
+echo "Creating boot partition"
 sudo parted "${DEV}" -s mkpart ESP fat32 1MiB "${EFI}"MiB
 sudo parted "${DEV}" -s set 1 boot on
 
@@ -103,9 +103,9 @@ echo "--------------------------------------------------------------------------
 
 # sudo nixos-generate-config --root /mnt --show-hardware-config | sudo tee ./config/nixos/router/hardware-configuration.nix > /dev/null
 
-sudo nano ./nixos/router/hardware-configuration.nix
+# sudo nano ./nixos/router/hardware-configuration.nix
 
 echo "Press enter to proceed to the installation"
 read -r
 
-sudo nixos-install --flake "github:ArthurDelbarre/Nix#router" --no-write-lock-file --show-trace
+# sudo nixos-install --flake "github:ArthurDelbarre/Nix#router" --no-write-lock-file --show-trace
