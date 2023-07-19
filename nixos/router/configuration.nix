@@ -2,7 +2,7 @@
 {
 
     imports = [
-        /mnt/hardware-configuration.nix
+        path:/mnt/hardware-configuration.nix
     ];
 
     # Make the system bootable
