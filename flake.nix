@@ -7,6 +7,7 @@
         users-path = {
             type = "file";
             url = "./users";
+            flake = false;
         };
     };
 
