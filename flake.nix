@@ -4,7 +4,9 @@
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-21.11";
         nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-        users-path = "./users";
+        users-path = {
+            url = ./users;
+        };
     };
 
     outputs = { self, nixpkgs, nixpkgs-unstable }:
