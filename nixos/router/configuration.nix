@@ -18,7 +18,10 @@
     time.timeZone = "Europe/Paris";
 
     #Set keyboard layout
-    services.xserver.layout = "fr";
+    services.xserver = {
+        enable = true;
+        layout = "fr";
+    };
 
     # Enable the OpenSSh deamon
     services.openssh.enable = true;
@@ -33,6 +36,6 @@
             "wheel"
             "networkmanager"
         ];
-        initialPassword = "ILikeHaskell";
+        passwordFile = "../../users/neil_passwd.txt";
     };
 }
