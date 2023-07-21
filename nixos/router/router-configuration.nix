@@ -8,7 +8,6 @@ in
     # Define the networking options for the internal (local network) interface
     networking = {
         hostName = "router";
-        allowPing = true;
         useNetworkd = false;
         useDHCP = false;
         interfaces."${externalInterface}".useDHCP = true;
