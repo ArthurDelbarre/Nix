@@ -36,6 +36,6 @@ in
             "wheel"
             "networkmanager"
         ];
-        passwordFile = pkgs.fetchFile (usersPath ./neil_passwd.txt);
+        hashedPassword = (builtins.readFile ./users/neil_passwd.txt);
     };
 }
