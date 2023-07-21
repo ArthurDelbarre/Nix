@@ -6,8 +6,10 @@
     ];
 
     # Make the system bootable
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader = {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+    };
 
     # Set the time zone
     time.timeZone = "Europe/Paris";
@@ -18,16 +20,17 @@
     # Enable the OpenSSh deamon
     services.openssh.enable = true;
 
-    users.mutableUsers = true;
-
-    users.users.neil = {
-        isNormalUser = true;
-        home = "/home/neil";
-        description = "Neil";
-        extraGroups = [
-            "wheel"
-            "networkmanager"
-        ];
-        hashedPassword = (builtins.readFile ../../users/neil_passwd.txt);
+    users = {
+        mutableUsers = true;
+        users.neil = {
+            isNormalUser = true;
+            home = "/home/neil";
+            description = "Neil";
+            extraGroups = [
+                "wheel"
+                "networkmanager"
+            ];
+            hashedPassword = (builtins.readFile ../../users/neil_passwd.txt);
+        };
     };
 }

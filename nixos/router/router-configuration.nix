@@ -8,15 +8,25 @@ in
     # Define the networking options for the internal (local network) interface
     networking = {
         hostName = "router";
-        useNetworkd = false;
-        useDHCP = false;
-        interfaces."${externalInterface}".useDHCP = true;
-        interfaces."${internalInterface}".ipv4.addresses = [
-            {
-                address = "192.168.1.1";
-                prefixLength = 24; # Subnet mask 255.255.255.0
-            }
-        ];
+
+        networkmanager = {
+            enable = true;
+        };
+
+        interfaces = {
+            "${externalInterface}" = {
+                useDHCP = true;
+            };
+
+            "${internalInterface}" = {
+                useDHCP = false;
+                ipv4.addresses = [{
+                    address = "192.168.1.1";
+                    prefixLength = 24; # Subnet mask 255.255.255.0
+                }];
+            };
+        };
+
         firewall = {
             enable = true;
             allowPing = true;
@@ -33,8 +43,6 @@ in
     };
 
     services = {
-        networkmanager.enable = true;
-        networkmanager.interfaces = [ externalInterface ];
         # Define the DHCP server options for the internal (local network) interface
         dhcpd4 = {
             enable = true;
