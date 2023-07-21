@@ -9,9 +9,9 @@ in
     networking = {
         hostName = "router";
 
-        networkmanager = {
-            enable = true;
-        };
+        # networkmanager = {
+        #     enable = true;
+        # };
 
         interfaces = {
             "${externalInterface}" = {
