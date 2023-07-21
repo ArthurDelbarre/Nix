@@ -5,7 +5,7 @@
         nixpkgs.url = "nixpkgs/nixos-21.11";
         nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
         users-path = {
-            url = ./users;
+            url = "./users";
         };
     };
 
