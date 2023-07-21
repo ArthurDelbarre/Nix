@@ -4,20 +4,21 @@
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-21.11";
         nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+        users-path = "./users";
     };
 
     outputs = { self, nixpkgs, nixpkgs-unstable }:
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
-        overlay-unstable = final: prev: {
-            unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        # overlay-unstable = final: prev: {
+        #     unstable = nixpkgs-unstable.legacyPackages.${prev.system};
             # use this variant if unfree packages are needed:
             # unstable = import nixpkgs-unstable {
             #   inherit system;
             #   config.allowUnfree = true;
             # };
-        };
+        # };
     in
     {
         packages.x86_64-linux = {

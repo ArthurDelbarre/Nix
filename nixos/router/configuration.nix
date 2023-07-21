@@ -1,4 +1,7 @@
 { config, lib, pkgs, ... }:
+let
+    usersPath = (import users-path);
+in
 {
     imports = [
         ./hardware-configuration.nix
@@ -33,6 +36,6 @@
             "wheel"
             "networkmanager"
         ];
-        passwordFile = "../../users/neil_passwd.txt";
+        passwordFile = pkgs.fetchFile (usersPath ./neil_passwd.txt);
     };
 }
