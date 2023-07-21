@@ -1,7 +1,4 @@
 { config, lib, pkgs, ... }:
-let
-    usersPath = (import users-path);
-in
 {
     imports = [
         ./hardware-configuration.nix
