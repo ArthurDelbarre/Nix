@@ -33,6 +33,6 @@
             "wheel"
             "networkmanager"
         ];
-        hashedPassword = (builtins.readFile ./users/neil_passwd.txt);
+        hashedPassword = (builtins.readFile ../../users/neil_passwd.txt);
     };
 }
