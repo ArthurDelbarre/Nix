@@ -18,8 +18,15 @@ in
                 prefixLength = 24; # Subnet mask 255.255.255.0
             }
         ];
-        firewall.enable = true;
-        nat.enable = true;
+        firewall = {
+            enable = true;
+            allowPing = true;
+        };
+
+        nat = {
+            enable= true;
+        };
+
         sysctl."net.ipv4.ip_forward" = 1;
     };
 
