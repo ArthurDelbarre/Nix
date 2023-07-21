@@ -4,8 +4,8 @@
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-21.11";
         nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-        users-folder = {
-            type = "path";
+        users-path = {
+            type = "file";
             default = "./users";
         };
     };
