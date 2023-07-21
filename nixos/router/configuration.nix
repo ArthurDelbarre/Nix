@@ -18,10 +18,7 @@
     time.timeZone = "Europe/Paris";
 
     #Set keyboard layout
-    services.xserver = {
-        enable = true;
-        layout = "fr";
-    };
+    console.keyMap = "fr";
 
     # Enable the OpenSSh deamon
     services.openssh.enable = true;
