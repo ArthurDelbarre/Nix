@@ -6,7 +6,6 @@
         nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
         users-path = {
             type = "file";
-            default = "./users";
         };
     };
 
