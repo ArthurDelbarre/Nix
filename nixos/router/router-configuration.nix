@@ -8,6 +8,7 @@ in
     # Define the networking options for the internal (local network) interface
     networking = {
         hostName = "router";
+        allowPing = true;
         useNetworkd = false;
         useDHCP = false;
         interfaces."${externalInterface}".useDHCP = true;
@@ -18,7 +19,7 @@ in
             }
         ];
         firewall.enable = true;
-        firewall.nat = true;
+        nat = true;
         sysctl."net.ipv4.ip_forward" = 1;
     };
 
