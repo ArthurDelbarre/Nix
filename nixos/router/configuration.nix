@@ -2,17 +2,12 @@
 {
     imports = [
         ./hardware-configuration.nix
+        ./router-configuration.nix
     ];
 
     # Make the system bootable
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
-
-    # Name the host machine
-    networking.hostName = "router";
-
-    # Enable network services
-    networking.networkmanager.enable = true;
 
     # Set the time zone
     time.timeZone = "Europe/Paris";
