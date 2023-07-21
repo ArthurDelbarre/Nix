@@ -39,13 +39,12 @@ in
         dhcpd4 = {
             enable = true;
             interfaces = [ internalInterface ];
-            options = ''
+            extraConfig = ''
+                interface "${internalInterface}";
+                option routers 192.168.1.1;
                 option domain-name "local-network";
                 option subnet-mask 255.255.255.0;
                 range 192.168.1.100 192.168.1.200;
-                default-lease-time 43200; # 12 hours in seconds
-                max-lease-time 86400;    # 24 hours in seconds
-                option routers 192.168.1.1;
             '';
         };
     };
