@@ -34,7 +34,7 @@
         };
     };
 
-    environment.systemPackages = [
-        python3
+    environment.systemPackages = with pkgs [
+        python310
     ];
 }
