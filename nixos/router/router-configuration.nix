@@ -58,7 +58,6 @@ in
                         type nat hook prerouting priority -100; policy accept;
                         tcp dport 8006 dnat to 10.13.84.50
                         tcp dport 8004 dnat to 10.13.84.50:22
-                        oifname "${externalInterface}" masquerade
                     }
                 }
 
