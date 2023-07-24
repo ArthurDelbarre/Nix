@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 let
     # Network interface names for the external (internet-facing) and internal (local network) interfaces
-    externalInterface = "enp0s1";  # Change this to match your external interface name
-    internalInterface = "enp0s2";  # Change this to match your internal interface name
+    externalInterface = "enp1s0";  # Change this to match your external interface name
+    internalInterface = "enp2s0";  # Change this to match your internal interface name
     publicDnsServer = "8.8.8.8";
 in
 {
