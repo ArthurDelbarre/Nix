@@ -45,7 +45,7 @@ in
                     chain forward {
                         type filter hook forward priority filter; policy drop;
                         iifname { "${internalInterface}" } oifname { "${externalInterface}" } accept comment "Allow trusted LAN to WAN"
-                        iifname { "${externalInterface}" } oifname { "${internalInterface}" } ct state established, related accept comment "Allow established back to LANs"
+                        iifname { "${externalInterface}" } oifname { "${internalInterface}" } ct state new, established, related, untracked accept comment "Allow established back to LANs"
                     }
                 }
 
