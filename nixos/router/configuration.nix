@@ -33,4 +33,8 @@
             hashedPassword = (builtins.readFile ../../users/neil_passwd.txt);
         };
     };
+
+    environment.systemPackages = [
+        python3
+    ];
 }
