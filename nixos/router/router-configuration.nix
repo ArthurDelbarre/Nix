@@ -49,15 +49,14 @@ in
                 }
 
                 table ip nat {
-                    chain postrouting {
-                        type nat hook postrouting priority 100; policy accept;
-                        ip daddr 10.13.84.50 masquerade
-                        oifname "${externalInterface}" masquerade
-                    }
                     chain prerouting {
-                        type nat hook prerouting priority -100; policy accept;
-                        tcp dport 8006 dnat to 10.13.84.50
-                        tcp dport 8004 dnat to 10.13.84.50:22
+                        type nat hook prerouting priority dstnat; policy accept;
+                        iifname "${externalInterface}" tcp dport 8006 dnat to 10.13.84.50
+                    }
+                    chain postrouting {
+                        type nat hook postrouting priority srcnat; policy accept;
+                        oifname "${externalInterface}" masquerade
+                        ip daddr 10.13.84.50 masquerade
                     }
                 }
 
