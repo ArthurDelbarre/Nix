@@ -38,7 +38,7 @@ in
                         type filter hook input priority 0; policy drop;
 
                         iifname { "${internalInterface}" } accept comment "Allow local network to access the router"
-                        iifname "${externalInterface}" ct state { established, related } accept comment "Allow established traffic"
+                        iifname "${externalInterface}" ct state { new, established, related, untracked } accept comment "Allow established traffic"
                         iifname "${externalInterface}" icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP"
                         iifname "${externalInterface}" counter drop comment "Drop all other unsolicited traffic from wan"
                     }
