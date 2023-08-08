@@ -53,11 +53,13 @@ in
                     chain prerouting {
                         type nat hook prerouting priority dstnat; policy accept;
                         iifname "${externalInterface}" tcp dport 8006 dnat to 10.13.84.50
+                        iifname "${externalInterface}" tcp dport 80 dnat to 10.13.84.51
                     }
                     chain postrouting {
                         type nat hook postrouting priority srcnat; policy accept;
                         oifname "${externalInterface}" masquerade
                         ip daddr 10.13.84.50 masquerade
+                        ip daddr 10.13.84.51 masquerade
                     }
                 }
 
